@@ -11,11 +11,21 @@
         body, html {
             margin: 0;
             padding: 0;
-            height: 100%;
+            height: 100dvh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             background: #f7f1e3;
+            scroll-behavior: smooth;
+        }
+
+        .cover {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.3s ease-in-out;
         }
 
         .card {
@@ -30,12 +40,38 @@
             border: 8px solid #e3b5a4;
             box-sizing: border-box;
             overflow: hidden;
-            animation: pulse 2s;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .cover img {
+            width: 150px;
+            height: 150px;
+            animation: bounce 2s infinite;
+        }
+
+        .floral-top, .floral-bottom {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: url('f.jpg') no-repeat center/cover;
+            z-index: -1;
+        }
+
+        .floral-top {
+            top: 0;
+            animation: slideDown 6s infinite alternate;
+        }
+
+        .floral-bottom {
+            bottom: 0;
+            animation: slideUp 6s infinite alternate;
         }
 
         h1 {
-            font-family: cursive;
-            font-size: 3.5rem;
+            font-family: 'Arial', cursive;
+            font-size: 2.5rem;
             color: #d63447;
             margin: 20px 0 10px;
             animation: fadeIn 3s ease-in-out;
@@ -79,6 +115,33 @@
             width: 120px;
             margin-top: 40px;
             animation: bounce 5s infinite;
+        }
+
+        .gift-box {
+            position: absolute;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            animation: drop 4s ease-out forwards;
+        }
+
+        .box-lid,
+        .box-body {
+            background-color: #d4af37;
+            width: 100%;
+            height: 50%;
+            border-radius: 5px;
+        }
+
+        .box-lid {
+            animation: openLid 3s ease-out forwards;
+        }
+
+        .box-body {
+            opacity: 0;
+            animation: revealBody 3s ease-out forwards;
         }
 
         @keyframes slideDown {
@@ -132,6 +195,33 @@
             }
         }
 
+        @keyframes drop {
+            from {
+                top: -200px;
+            }
+            to {
+                top: 100px;
+            }
+        }
+
+        @keyframes openLid {
+            0% {
+                transform: rotateX(0deg);
+            }
+            100% {
+                transform: rotateX(-180deg);
+            }
+        }
+
+        @keyframes revealBody {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
         @media (max-width: 600px) {
             h1 {
                 font-size: 1.9rem;
@@ -149,15 +239,17 @@
     </style>
 </head>
 <body>
+    <div class="cover" id="cover" onclick="revealInvitation()">
+        <img src="gift.png" alt="Gift Box">
+    </div>
+
     <div class="card">
-        <!-- <div class="floral-top"></div> -->
-        <!-- <p class="invite">Dear [Guest Name],</p> -->
         <h1>Mr & Mrs <br> Mati ur Rehman</h1>
         <p>Together with their families</p>
         <p>Request the pleasure of your company</p>
         <p>At the Walima Ceremony</p>
         <div class="date-box">
-            <p>Sunday, 2nd Feburary 2025</p>
+            <p>Sunday, 2nd February 2025</p>
         </div>
         <div class="details">
             <p class="venue">Al-Makkah Marriage Hall, Vanike Tarar</p>
@@ -165,7 +257,14 @@
         </div>
         <p>Ansar Iqbal looks forward to greeting you!</p>
         <img class="dancing-couple" src="couple.jpg" alt="Couple Dancing">
-        <!-- <div class="floral-bottom"></div> -->
     </div>
+
+    <script>
+        function revealInvitation() {
+            const card = document.querySelector('.card');
+            card.style.opacity = 1; // Reveal the card by changing opacity
+            document.getElementById('cover').style.display = 'none'; // Hide the gift box
+        }
+    </script>
 </body>
 </html>
