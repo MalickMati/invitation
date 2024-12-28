@@ -52,25 +52,7 @@
             animation: bounce 2s infinite;
         }
 
-        .floral-top, .floral-bottom {
-            position: absolute;
-            left: 0;
-            width: 100%;
-            height: 120px;
-            background: url('f.jpg') no-repeat center/cover;
-            z-index: -1;
-        }
-
-        .floral-top {
-            top: 0;
-            animation: slideDown 6s infinite alternate;
-        }
-
-        .floral-bottom {
-            bottom: 0;
-            animation: slideUp 6s infinite alternate;
-        }
-
+        
         h1 {
             font-family: 'Arial', cursive;
             font-size: 2.5rem;
@@ -104,6 +86,14 @@
         .venue {
             font-weight: bold;
             font-size: 1.3rem;
+        }
+        .venue a{
+            color: #555;
+            transition: 0.2s all ease-in-out;
+        }
+        .venue a:hover{
+            color: #d63447;
+            transition: 0.2s all ease-in-out;
         }
 
         .invite {
@@ -247,6 +237,7 @@
 
     <div class="card">
         <h1>Mr & Mrs <br> Mati ur Rehman</h1>
+        <!-- <p>Invitation for <strong style="text-decoration: underline;">Nazir Ahmad</strong></p> -->
         <p>Together with their families</p>
         <p>Request the pleasure of your company</p>
         <p>At the Walima Ceremony</p>
@@ -254,7 +245,7 @@
             <p>Friday, 17th January 2025</p>
         </div>
         <div class="details">
-            <p class="venue">Al-Makkah Marriage Hall, Vanike Tarar</p>
+            <p class="venue"><a href="https://maps.app.goo.gl/1ViCUfXbivP9MxX17">Al-Makkah Marriage Hall, Vanike Tarar</a></p>
             <p>At 2 o'clock in the afternoon</p>
         </div>
         <p>Mr & Mrs Ansar Iqbal looks forward to greeting you!</p>
